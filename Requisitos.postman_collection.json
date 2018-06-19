@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "6505b1c0-38e7-49e8-a7cd-bc760a265660",
+		"name": "Requisitos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuario",
+			"description": "CRUD Usuario",
+			"item": [
+				{
+					"name": "Cria usuário 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"alisson\",\n    \"email\" : \"alisson@gmail.com\",\n    \"senha\" : \"123456\",\n    \"dataInclusao\" : \"2018-06-09\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario"
+							]
+						},
+						"description": "Criar usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "Cria usuário 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"diogo\",\n    \"email\" : \"diogo@gmail.com\",\n    \"senha\" : \"654321\",\n    \"dataInclusao\" : \"2018-06-08\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca todos usuários",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca  específico usuario",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar usuário",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"alterado\",\n    \"email\" : \"alterado\",\n    \"senha\" : \"alterado\",\n    \"dataInclusao\" : \"2018-06-09\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Integrante",
+			"description": "CRUD Integrante",
+			"item": [
+				{
+					"name": "Criar Integrante 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario\" : {\n\t\t\"id\": 1\n\t},\n\t\"perfilIntegranteProjeto\": 0,\n\t\"projetos\": [],\n\t\"requisitos\": [],\n\t\"casosDeUso\": [],\n\t\"atividades\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/integrante",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"integrante"
+							]
+						},
+						"description": "Criar integrante"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos integrates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/integrante/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"integrante",
+								"list"
+							]
+						},
+						"description": "Buscar todos integrantes"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar especifico integrante",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/integrante/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"integrante",
+								"1"
+							]
+						},
+						"description": "Buscar um integrante especifico"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir integrante",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/integrante/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"integrante",
+								"1"
+							]
+						},
+						"description": "Excluir integrante especifico"
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Integrante",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuario\" : {\n\t\t\"id\": 2\n\t},\n\t\"perfilIntegranteProjeto\": 1,\n\t\"projetos\": [],\n\t\"requisitos\": [],\n\t\"casosDeUso\": [],\n\t\"atividades\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/integrante/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"integrante",
+								"1"
+							]
+						},
+						"description": "Alterar integrante"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Projeto",
+			"description": "CRUD projeto\n",
+			"item": [
+				{
+					"name": "Criar Projeto 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Gerenciamento de requisitos\",\n\t\"dataInicio\": \"10/06/2018\",\n\t\"dataFim\": \"26/06/2018\",\n\t\"integrante\": {\n\t\t\"usuario\" : {\n\t\t\t\"id\": 1\n\t\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/projeto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"projeto"
+							]
+						},
+						"description": "Criar projeto"
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos projetos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/requisitos-0.0.1/api/projeto/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"requisitos-0.0.1",
+								"api",
+								"projeto",
+								"list"
+							]
+						},
+						"description": "Buscar todos os projetos"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
