@@ -17,7 +17,7 @@ import br.com.backend.requisitos.dto.CasoDeUsoDetalhadoDTO;
 import br.com.backend.requisitos.entity.CasoDeUso;
 import br.com.backend.requisitos.entity.Integrante;
 import br.com.backend.requisitos.entity.Projeto;
-import br.com.backend.requisitos.entity.Requisito;
+import br.com.backend.requisitos.utils.Util;
 
 public class CasoDeUsoBC extends AbstractBusiness<CasoDeUso, Integer> {
 	
@@ -86,6 +86,26 @@ public class CasoDeUsoBC extends AbstractBusiness<CasoDeUso, Integer> {
 			if(casoDeUso == null) throw new Exception("CasoDeUso não encontrado");
 
 			return new CasoDeUsoDetalhadoDTO(casoDeUso);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public CasoDeUsoDetalhadoDTO merge(CasoDeUso casoDeUsoNovo, Integer idCasoDeUso) throws Exception {
+		try {
+			
+			CasoDeUso casoDeUsoAntigo = casoDeUsoDAO.find(idCasoDeUso);
+			if(casoDeUsoAntigo == null) throw new Exception("Caso de uso não confere");
+			
+			Integrante integrante = integranteDAO.find(casoDeUsoNovo.getIntegrante().getId());
+			if(integrante == null) throw new Exception("Integrante não encontrado");
+			
+			casoDeUsoNovo.setDataAlteracao(Util.currentDate());
+			casoDeUsoNovo.setId(casoDeUsoAntigo.getId());
+			
+
+
+			return new CasoDeUsoDetalhadoDTO(casoDeUsoDAO.mergeHalf(idCasoDeUso, casoDeUsoNovo));
 		} catch (Exception e) {
 			throw e;
 		}

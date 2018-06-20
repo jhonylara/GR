@@ -32,7 +32,7 @@ public class CasoDeUsoREST extends AbstractREST<CasoDeUso, Integer> {
     public Response create(@PathParam("idProjeto") final Integer idProjeto, CasoDeUso p	) {
         try {
         	((CasoDeUsoBC)bc).create(idProjeto, p);
-        	return Response.ok().entity(p).build();
+        	return Response.ok().build();
         }
         catch(Exception e) {
         	e.printStackTrace();
@@ -74,13 +74,12 @@ public class CasoDeUsoREST extends AbstractREST<CasoDeUso, Integer> {
 	@Transactional
 	public Response alterar(CasoDeUso c, @PathParam("idCasoDeUso") final Integer idCasoDeUso) {
 		try {
-			bc.mergeHalf(idCasoDeUso, c);
-			return Response.ok().build();
+			return Response.ok(((CasoDeUsoBC) bc).merge(c, idCasoDeUso)).build();
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 			LOG.severe("Erro não tratado");
-			return Response.serverError().build();
+			return Response.serverError().entity(Json.pretty(e.getMessage())).build();
 		}
 	}
 	

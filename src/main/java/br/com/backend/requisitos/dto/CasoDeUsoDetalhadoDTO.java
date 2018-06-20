@@ -3,117 +3,112 @@ package br.com.backend.requisitos.dto;
 import java.util.Calendar;
 
 import br.com.backend.requisitos.entity.CasoDeUso;
-import br.com.backend.requisitos.entity.Integrante;
-import br.com.backend.requisitos.entity.Projeto;
 
 public class CasoDeUsoDetalhadoDTO {
 
-		private Integer id;
+	private Integer id;
 
-		private String nome;
-		
-		private String escopo;
-		
-		private String nivel;
-		
-		private String preCondicao;
-		
-		private Calendar dataInclusao;
-		
-		private Calendar dataAlteracao;
-		
-		private Projeto projeto;
-		
-		private Integrante integrante;
-		
+	private String nome;
 	
-		public CasoDeUsoDetalhadoDTO() {}
-		
-		public CasoDeUsoDetalhadoDTO(CasoDeUso casoDeUso) {
-			this.id = casoDeUso.getId();
-			this.nome = casoDeUso.getNome();
-			this.escopo = casoDeUso.getEscopo();
-			this.nivel = casoDeUso.getNivel();
-			this.preCondicao = casoDeUso.getPreCondicao();
-			this.dataInclusao = casoDeUso.getDataInclusao();
-			this.dataAlteracao =  casoDeUso.getDataAlteracao();
-			this.projeto = casoDeUso.getProjeto();
-			this.integrante = casoDeUso.getIntegrante();
-					
-		}
-		
+	private String escopo;
+	
+	private String nivel;
+	
+	private String preCondicao;
+	
+	private Calendar dataInclusao;
+	
+	private Calendar dataAlteracao;
+	
+	private ProjetoDTO projetoDTO;
 
-		public Integer getId() {
-			return id;
-		}
+	private IntegranteDTO integranteDTO;
+	
 
-		public void setId(Integer id) {
-			this.id = id;
-		}
+	public CasoDeUsoDetalhadoDTO() {}
+	
+	public CasoDeUsoDetalhadoDTO(CasoDeUso casoDeUso) {
+		this.id = casoDeUso.getId();
+		this.nome = casoDeUso.getNome();
+		this.escopo = casoDeUso.getEscopo();
+		this.nivel = casoDeUso.getNivel();
+		this.preCondicao = casoDeUso.getPreCondicao();
+		this.dataInclusao = casoDeUso.getDataInclusao();
+		this.dataAlteracao =  casoDeUso.getDataAlteracao();
+		this.projetoDTO = new ProjetoDTO(casoDeUso.getProjeto());
+		this.integranteDTO = new IntegranteDTO(casoDeUso.getIntegrante());	
+	}
 
-		public String getNome() {
-			return nome;
-		}
+	public Integer getId() {
+		return id;
+	}
 
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-		public String getEscopo() {
-			return escopo;
-		}
+	public String getNome() {
+		return nome;
+	}
 
-		public void setEscopo(String escopo) {
-			this.escopo = escopo;
-		}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-		public String getNivel() {
-			return nivel;
-		}
+	public String getEscopo() {
+		return escopo;
+	}
 
-		public void setNivel(String nivel) {
-			this.nivel = nivel;
-		}
+	public void setEscopo(String escopo) {
+		this.escopo = escopo;
+	}
 
-		public String getPreCondicao() {
-			return preCondicao;
-		}
+	public String getNivel() {
+		return nivel;
+	}
 
-		public void setPreCondicao(String preCondicao) {
-			this.preCondicao = preCondicao;
-		}
+	public void setNivel(String nivel) {
+		this.nivel = nivel;
+	}
 
-		public Calendar getDataInclusao() {
-			return dataInclusao;
-		}
+	public String getPreCondicao() {
+		return preCondicao;
+	}
 
-		public void setDataInclusao(Calendar dataInclusao) {
-			this.dataInclusao = dataInclusao;
-		}
+	public void setPreCondicao(String preCondicao) {
+		this.preCondicao = preCondicao;
+	}
 
-		public Calendar getDataAlteracao() {
-			return dataAlteracao;
-		}
+	public Calendar getDataInclusao() {
+		return dataInclusao;
+	}
 
-		public void setDataAlteracao(Calendar dataAlteracao) {
-			this.dataAlteracao = dataAlteracao;
-		}
-		
-		public Projeto getProjeto() {
-			return projeto;
-		}
+	public void setDataInclusao(Calendar dataInclusao) {
+		this.dataInclusao = dataInclusao;
+	}
 
-		public void setProjeto(Projeto projeto) {
-			this.projeto = projeto;
-		}
+	public Calendar getDataAlteracao() {
+		return dataAlteracao;
+	}
 
-		public Integrante getIntegrante() {
-			return integrante;
-		}
+	public void setDataAlteracao(Calendar dataAlteracao) {
+		this.dataAlteracao = dataAlteracao;
+	}
+	
+	public ProjetoDTO getProjetoDTO() {
+		return projetoDTO;
+	}
 
-		public void setIntegrante(Integrante integrante) {
-			this.integrante = integrante;
-		}
+	public void setProjetoDTO(ProjetoDTO projetoDTO) {
+		this.projetoDTO = projetoDTO;
+	}
 
+	public IntegranteDTO getIntegranteDTO() {
+		return integranteDTO;
+	}
+
+	public void setIntegranteDTO(IntegranteDTO integranteDTO) {
+		this.integranteDTO = integranteDTO;
+	}
 
 }
