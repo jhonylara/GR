@@ -1,5 +1,6 @@
 package br.com.backend.requisitos.bc;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,9 +12,12 @@ import org.demoiselle.jee.crud.AbstractBusiness;
 import br.com.backend.requisitos.dao.CasoDeUsoDAO;
 import br.com.backend.requisitos.dao.IntegranteDAO;
 import br.com.backend.requisitos.dao.ProjetoDAO;
+import br.com.backend.requisitos.dto.CasoDeUsoDTO;
+import br.com.backend.requisitos.dto.CasoDeUsoDetalhadoDTO;
 import br.com.backend.requisitos.entity.CasoDeUso;
 import br.com.backend.requisitos.entity.Integrante;
 import br.com.backend.requisitos.entity.Projeto;
+import br.com.backend.requisitos.entity.Requisito;
 
 public class CasoDeUsoBC extends AbstractBusiness<CasoDeUso, Integer> {
 	
@@ -50,29 +54,41 @@ public class CasoDeUsoBC extends AbstractBusiness<CasoDeUso, Integer> {
 			
 			System.out.println("Saiu");
 			
-			
-			
 			Calendar date = Calendar.getInstance();
 			casoDeUso.setDataInclusao(date);
 		
 			
 			casoDeUsoDAO.create(casoDeUso);
-			
-			//integrante.setUsuario(usuarioIntegrante);
-			
-			//integranteDAO.create(integrante);
 		}
 		catch(Exception e) {
 			throw e;
 		}	
 	}
-		public List<CasoDeUso> list() {
-			try {
-				return casoDeUsoDAO.list();
-			}
-			catch(Exception e) {
-				throw e;
-			}
-		}		
+	public List<CasoDeUsoDTO> list(Integer idProjeto) {
+		try {
+			List<CasoDeUsoDTO> casoDeUsoDTOs = new ArrayList<CasoDeUsoDTO>();
+			for (CasoDeUso casoDeUso : casoDeUsoDAO.list(idProjeto))
+				casoDeUsoDTOs.add(new CasoDeUsoDTO(casoDeUso));
+
+			return casoDeUsoDTOs;
+		}
+		catch(Exception e) {
+			throw e;
+		}
+	}	
+	
+	public CasoDeUsoDetalhadoDTO find(Integer idProjeto, Integer idCasoDeUso) throws Exception {
+		try {
+			Projeto projeto = projetoDAO.find(idProjeto);
+			if(projeto == null) throw new Exception("Projeto não encontrado");
+			
+			CasoDeUso casoDeUso = casoDeUsoDAO.find(idProjeto, idCasoDeUso);
+			if(casoDeUso == null) throw new Exception("CasoDeUso não encontrado");
+
+			return new CasoDeUsoDetalhadoDTO(casoDeUso);
+		} catch (Exception e) {
+			throw e;
+		}
 	}
+}
 

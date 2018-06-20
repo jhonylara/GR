@@ -22,14 +22,14 @@ public class CasoDeUsoDTO {
 	
 	public CasoDeUsoDTO() {}
 	
-	public CasoDeUsoDTO(CasoDeUso casDeUso) {
-		this.id = casDeUso.getId();
-		this.nome = casDeUso.getNome();
-		this.escopo = casDeUso.getEscopo();
-		this.nivel = casDeUso.getNivel();
-		this.preCondicao = casDeUso.getPreCondicao();
-		this.dataInclusao = casDeUso.getDataInclusao();
-		this.dataAlteracao =  casDeUso.getDataAlteracao();
+	public CasoDeUsoDTO(CasoDeUso casoDeUso) {
+		this.id = casoDeUso.getId();
+		this.nome = casoDeUso.getNome();
+		this.escopo = casoDeUso.getEscopo();
+		this.nivel = casoDeUso.getNivel();
+		this.preCondicao = casoDeUso.getPreCondicao();
+		this.dataInclusao = casoDeUso.getDataInclusao();
+		this.dataAlteracao =  casoDeUso.getDataAlteracao();
 				
 	}
 	

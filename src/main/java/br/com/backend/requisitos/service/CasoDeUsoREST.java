@@ -22,79 +22,81 @@ import br.com.backend.requisitos.bc.CasoDeUsoBC;
 import br.com.backend.requisitos.entity.CasoDeUso;
 import io.swagger.util.Json;
 
-	@Path("projeto/{idProjeto}/CasoDeUso")
-	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	public class CasoDeUsoREST extends AbstractREST<CasoDeUso, Integer> {
-		private static final Logger LOG = getLogger(ProjetoREST.class.getName());
-		
-		@POST
-	    public Response create(@PathParam("idProjeto") final Integer idProjeto, CasoDeUso p	) {
-	        try {
-	        	((CasoDeUsoBC)bc).create(idProjeto, p);
-	        	return Response.ok().entity(p).build();
-	        }
-	        catch(Exception e) {
-	        	e.printStackTrace();
-	        	return Response.serverError().entity(Json.pretty(e.getMessage())).build();
-	        }
-	    }
-		
-		@GET
-		// @CacheControl(value = "max-age=3600, must-revalidate, public") // caso queira cache em algum serviço
-		@Path("/list")
-	    public Response list(@PathParam("idProjeto") final Integer idProjeto) {
-	        try { 
-	        	return Response.ok(((CasoDeUsoBC)bc).list(idProjeto)).build();
-	        }
-	        catch(Exception e) {
-	        	e.printStackTrace();
-	        	LOG.severe("Erro não tratado");
-	        	return Response.serverError().build();
-	        }
-	    }
-		
-		
-		@GET
-		@Path("/{idCasoDeUso}")
-		public Response buscar(@PathParam("idCasoDeUso") final Integer idCasoDeUso) {
-			try {
-				return Response.ok(bc.find(idCasoDeUso)).build();
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				LOG.severe("Erro não tratado");
-				return Response.serverError().build();
-			}
+@Path("projeto/{idProjeto}/CasoDeUso")
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
+public class CasoDeUsoREST extends AbstractREST<CasoDeUso, Integer> {
+	private static final Logger LOG = getLogger(ProjetoREST.class.getName());
+	
+	@POST
+    public Response create(@PathParam("idProjeto") final Integer idProjeto, CasoDeUso p	) {
+        try {
+        	((CasoDeUsoBC)bc).create(idProjeto, p);
+        	return Response.ok().entity(p).build();
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        	return Response.serverError().entity(Json.pretty(e.getMessage())).build();
+        }
+    }
+	
+	@GET
+	@Path("/list")
+    public Response list(@PathParam("idProjeto") final Integer idProjeto) {
+        try { 
+        	return Response.ok(((CasoDeUsoBC)bc).list(idProjeto)).build();
+        }
+        catch(Exception e) {
+        	e.printStackTrace();
+        	LOG.severe("Erro não tratado");
+        	return Response.serverError().build();
+        }
+    }
+	
+	
+	@GET
+	@Path("/{idCasoDeUso}")
+	public Response buscar(
+			@PathParam("idProjeto") final Integer idProjeto,
+			@PathParam("idCasoDeUso") final Integer idCasoDeUso) {
+		try {
+			return Response.ok(((CasoDeUsoBC) bc).find(idProjeto, idCasoDeUso)).build();
 		}
-		
-		@PUT
-		@Path("/{idProjeto}")
-		@Transactional
-		public Response alterar(CasoDeUso c, @PathParam("idCasoDeUso") final Integer idCasoDeUso) {
-			try {
-				bc.mergeHalf(idCasoDeUso, c);
-				return Response.ok().build();
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				LOG.severe("Erro não tratado");
-				return Response.serverError().build();
-			}
+		catch(Exception e) {
+			e.printStackTrace();
+			LOG.severe("Erro não tratado");
+			return Response.serverError().build();
 		}
-		
-		@DELETE
-		@Path("/{idCasoDeUso}")
-		@Transactional
-		public Response excluir(@PathParam("idCasoDeUso") final Integer idCasoDeUso) {
-			try {
-				bc.remove(idCasoDeUso);
-				return Response.ok().build();
-			}
-			catch(Exception e) {
-				e.printStackTrace();
-				return Response.serverError().build();
-			}
+	}
+	
+	@PUT
+	@Path("/{idCasoDeUso}")
+	@Transactional
+	public Response alterar(CasoDeUso c, @PathParam("idCasoDeUso") final Integer idCasoDeUso) {
+		try {
+			bc.mergeHalf(idCasoDeUso, c);
+			return Response.ok().build();
 		}
+		catch(Exception e) {
+			e.printStackTrace();
+			LOG.severe("Erro não tratado");
+			return Response.serverError().build();
+		}
+	}
+	
+	@DELETE
+	@Path("/{idCasoDeUso}")
+	@Transactional
+	public Response excluir(@PathParam("idCasoDeUso") final Integer idCasoDeUso) {
+		try {
+			bc.remove(idCasoDeUso);
+			return Response.ok().build();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			LOG.severe("Erro não tratado");
+			return Response.serverError().build();
+		}
+	}
 
 }

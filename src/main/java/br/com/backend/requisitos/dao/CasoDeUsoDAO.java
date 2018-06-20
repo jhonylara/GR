@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaQuery;
 
 import org.demoiselle.jee.crud.AbstractDAO;
 
@@ -30,16 +29,31 @@ public class CasoDeUsoDAO extends AbstractDAO<CasoDeUso, Integer>{
 		}
 	}
 
-	public List<CasoDeUso> list() {
+	public List<CasoDeUso> list(Integer idProjeto) {
 		try {
-			CriteriaQuery<CasoDeUso> query = getEntityManager().getCriteriaBuilder().createQuery(CasoDeUso.class);
-			query.select(query.from(CasoDeUso.class));
-
-			return getEntityManager().createQuery(query).getResultList();
+			return getEntityManager()
+					.createNamedQuery("CasoDeUso.findAll", CasoDeUso.class)
+					.setParameter("idProjeto", idProjeto)
+					.getResultList();
 		} catch (Exception e) {
 			throw e;
 		}
 	}
+	
+	public CasoDeUso find(Integer idProjeto, Integer idCasoDeUso) {
+		try {
+			List<CasoDeUso> casoDeUso = getEntityManager()
+					.createNamedQuery("CasoDeUso.findById", CasoDeUso.class)
+					.setParameter("idProjeto", idProjeto)
+					.setParameter("idCasoDeUso", idCasoDeUso)
+					.getResultList();
+
+			return casoDeUso.size() > 0 ? casoDeUso.get(0) : null;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
 	
 	public CasoDeUso findByNameInProject(Integer idProjeto, String nomeCasoDeUso) {
 		try {

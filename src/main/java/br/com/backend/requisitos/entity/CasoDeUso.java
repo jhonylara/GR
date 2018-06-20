@@ -18,8 +18,16 @@ import br.com.backend.requisitos.entity.Projeto;
 @Entity
 @NamedQueries({
 	@NamedQuery(
-		name="CasoDeUso.findByNameInProject", 
-		query="SELECT c FROM CasoDeUso c WHERE c.nome = :casoDeUsoNome"
+			name="CasoDeUso.findAll",
+	        query="SELECT c FROM CasoDeUso c INNER JOIN c.projeto p WHERE p.id = :idProjeto"
+	),
+	@NamedQuery(
+			name="CasoDeUso.findById",
+			query="SELECT c FROM CasoDeUso c INNER JOIN c.projeto p WHERE p.id = :idProjeto AND c.id = :idCasoDeUso"
+	    ),
+	@NamedQuery(
+			name="CasoDeUso.findByNameInProject", 
+			query="SELECT c FROM CasoDeUso c WHERE c.nome = :casoDeUsoNome"
 	)
 })
 public class CasoDeUso {

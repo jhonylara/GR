@@ -6,7 +6,7 @@ import br.com.backend.requisitos.entity.CasoDeUso;
 import br.com.backend.requisitos.entity.Integrante;
 import br.com.backend.requisitos.entity.Projeto;
 
-public class CadoDeUsoDetalhadoDTO {
+public class CasoDeUsoDetalhadoDTO {
 
 		private Integer id;
 
@@ -27,9 +27,9 @@ public class CadoDeUsoDetalhadoDTO {
 		private Integrante integrante;
 		
 	
-		public CadoDeUsoDetalhadoDTO() {}
+		public CasoDeUsoDetalhadoDTO() {}
 		
-		public CadoDeUsoDetalhadoDTO(CasoDeUso casoDeUso) {
+		public CasoDeUsoDetalhadoDTO(CasoDeUso casoDeUso) {
 			this.id = casoDeUso.getId();
 			this.nome = casoDeUso.getNome();
 			this.escopo = casoDeUso.getEscopo();
