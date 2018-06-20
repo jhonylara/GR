@@ -41,12 +41,14 @@ public class CasoDeUsoDAO extends AbstractDAO<CasoDeUso, Integer>{
 		}
 	}
 	
-	public CasoDeUso findByNameInProject(CasoDeUso casoDeUso) {
+	public CasoDeUso findByNameInProject(Integer idProjeto, String nomeCasoDeUso) {
 		try {
+			System.out.println(idProjeto);
+			System.out.println(nomeCasoDeUso);
 			List<CasoDeUso> totalCasosDeUso = getEntityManager()
 					.createNamedQuery("CasoDeUso.findByNameInProject", CasoDeUso.class)
-					.setParameter("casoDeUsoNome", casoDeUso.getNome())
-					.setParameter("idProjeto", casoDeUso.getProjeto().getId())
+					.setParameter("casoDeUsoNome", nomeCasoDeUso)
+					//.setParameter("idProjeto", idProjeto)
 					.getResultList();
 			
 		    //query.where(builder.equal(SQL, idUsuario));

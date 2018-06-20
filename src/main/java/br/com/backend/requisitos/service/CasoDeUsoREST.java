@@ -22,16 +22,16 @@ import br.com.backend.requisitos.bc.CasoDeUsoBC;
 import br.com.backend.requisitos.entity.CasoDeUso;
 import io.swagger.util.Json;
 
-	@Path("CasoDeUso")
+	@Path("projeto/{idProjeto}/CasoDeUso")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public class CasoDeUsoREST extends AbstractREST<CasoDeUso, Integer> {
 		private static final Logger LOG = getLogger(ProjetoREST.class.getName());
 		
 		@POST
-	    public Response create(CasoDeUso p) {
+	    public Response create(@PathParam("idProjeto") final Integer idProjeto, CasoDeUso p	) {
 	        try {
-	        	((CasoDeUsoBC)bc).create(p);
+	        	((CasoDeUsoBC)bc).create(idProjeto, p);
 	        	return Response.ok().entity(p).build();
 	        }
 	        catch(Exception e) {
@@ -43,9 +43,9 @@ import io.swagger.util.Json;
 		@GET
 		// @CacheControl(value = "max-age=3600, must-revalidate, public") // caso queira cache em algum serviço
 		@Path("/list")
-	    public Response list() {
+	    public Response list(@PathParam("idProjeto") final Integer idProjeto) {
 	        try { 
-	        	return Response.ok(((CasoDeUsoBC)bc).list()).build();
+	        	return Response.ok(((CasoDeUsoBC)bc).list(idProjeto)).build();
 	        }
 	        catch(Exception e) {
 	        	e.printStackTrace();

@@ -19,7 +19,7 @@ import br.com.backend.requisitos.entity.Projeto;
 @NamedQueries({
 	@NamedQuery(
 		name="CasoDeUso.findByNameInProject", 
-		query="SELECT c.nome FROM CasoDeUso AS c INNER JOIN c.projeto p WHERE c.nome = :casoDeUsoNome AND p.id = :idProjeto"
+		query="SELECT c FROM CasoDeUso c WHERE c.nome = :casoDeUsoNome"
 	)
 })
 public class CasoDeUso {
@@ -37,10 +37,7 @@ public class CasoDeUso {
 	
 	@Column(name = "caso_de_uso_nivel", nullable = false)
 	private String nivel;
-	
-	@Column(name = "caso_de_uso_interesses_interessados", nullable = false)
-	private String interessesInteressados;
-	
+
 	@Column(name = "caso_de_uso_pre_condicao", nullable = false)
 	private String preCondicao;
 	
@@ -77,7 +74,6 @@ public class CasoDeUso {
 		this.nome = nome;
 		this.escopo = escopo;
 		this.nivel = nivel;
-		this.interessesInteressados = interessesInteressados;
 		this.preCondicao = preCondicao;
 		this.dataInclusao = dataInclusao;
 		this.dataAlteracao = dataAlteracao;
@@ -115,14 +111,6 @@ public class CasoDeUso {
 	
 	public void setNivel(String nivel) {
 		this.nivel = nivel;
-	}
-	
-	public String getInteressesInteressados() {
-		return interessesInteressados;
-	}
-	
-	public void setInteressesInteressados(String interessesInteressados) {
-		this.interessesInteressados = interessesInteressados;
 	}
 	
 	public String getPreCondicao() {
